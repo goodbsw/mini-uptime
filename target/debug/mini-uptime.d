@@ -1,0 +1,1 @@
+/Users/seungweonbaek/Projects/learn-rust/mini-uptime/target/debug/mini-uptime: /Users/seungweonbaek/Projects/learn-rust/mini-uptime/src/main.rs /Users/seungweonbaek/Projects/learn-rust/mini-uptime/src/parser.rs
