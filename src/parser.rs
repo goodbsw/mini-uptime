@@ -1,3 +1,4 @@
+#[derive(Debug, PartialEq, Eq)]
 pub struct EnvPair<'a> {
     key: &'a str,
     value: &'a str
@@ -18,6 +19,14 @@ impl<'a> EnvPair<'a> {
             }
         }
         result
+    }
+
+    pub fn search(envs: &[EnvPair<'a>], search_key: &str) -> Result<&'a str, String> {
+        let found = envs.iter().find(|e| e.key == search_key);
+        match found {
+            Some(e) => Ok(e.value),
+            _ => Err("Key not found".to_string())
+        }
     }
 }
 
