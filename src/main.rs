@@ -2,12 +2,15 @@ mod parser;
 use parser::EnvPair;
 
 fn main() {
-    let raw_env_data = "USER=seungwon.baek\nPATH=/usr/bin:/bin\nSHELL=/bin/zsh";
-    let env_pairs = EnvPair::parse(raw_env_data);
+    let mut native_str = String::new();
+    for (k, v) in std::env::vars() {
+       native_str.push_str(&format!("{}={}\n", k, v));
+    }
+    let env_pairs = EnvPair::parse(&native_str);
     // for env in env_pairs {
     //     println!("{env}");
     // }
-    let val = EnvPair::search(&env_pairs, "USER");
+    let val = EnvPair::search(&env_pairs, "VSCODE_GIT_ASKPASS_MAIN");
     match val {
         Ok(v) => println!("{v}"),
         Err(e) => eprintln!("{e}")
